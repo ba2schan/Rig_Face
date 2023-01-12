@@ -1,0 +1,6 @@
+selJnt = cmds.ls(sl=True)
+selLoc =  cmds.ls(sl=True)
+
+for num in range(0,len(selLoc)}:
+    #cmds.pointConstraint(selLoc{num}, selJnt{num}, mo = 1)
+    cmds.connectAttr(selLoc[num] + '.translate', selJnt[num]+ '.translate')
