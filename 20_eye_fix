@@ -1,0 +1,15 @@
+sel = cmds.ls(sl=True)
+crv = 'L_eyeLidDown_high_Attach_curveShape'
+num = 0
+
+
+for s in sel:
+    pos = cmds.xform(s ,q = 1 , ws = 1 , t = 1)
+    #u = getUParam(pos, crv)
+    name = s.replace('loc_','pci_')
+    pci = cmds.createNode('pointOnCurveInfo', n = name)
+    #print pci
+    cmds.connectAttr(crv + '.worldSpace', pci + '.inputCurve')
+    cmds.setAttr(pci +  '.parameter', num)
+    cmds.connectAttr(pci + '.position', s + '.t')
+    num += 1
